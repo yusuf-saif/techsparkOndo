@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechSpark Okitipupa 2026 ⚡</title>
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --yellow: #F5C400;
+      --purple: #534AB7;
+      --navy:   #26215C;
+      --light:  #F9F9FF;
+      --gray:   #f4f4f8;
+      --text:   #1a1a2e;
+      --muted:  #666;
+      --radius: 14px;
+      --shadow: 0 4px 20px rgba(83,74,183,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;scroll-padding-top:72px;}
+    body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:#fff;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+
+    /* ── NAV ────────────────────────────────────────────────── */
+    nav{
+      position:sticky;top:0;z-index:100;
+      background:var(--navy);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 5%;height:60px;
+    }
+    .nav-logo{color:var(--yellow);font-size:1.1rem;font-weight:800;letter-spacing:.5px;}
+    .nav-logo span{color:#fff;}
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,.8);font-size:13px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover{color:var(--yellow);}
+    .nav-cta{
+      background:var(--yellow);color:var(--navy);
+      font-size:13px;font-weight:700;
+      padding:8px 18px;border-radius:20px;
+      transition:opacity .2s;
+    }
+    .nav-cta:hover{opacity:.85;}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;}
+    .mobile-menu{display:none;flex-direction:column;background:var(--navy);padding:16px 5%;gap:12px;}
+    .mobile-menu a{color:rgba(255,255,255,.85);font-size:15px;font-weight:600;padding:6px 0;}
+    .mobile-menu.open{display:flex;}
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero{
+      background:var(--navy);
+      padding:70px 5% 60px;
+      position:relative;overflow:hidden;
+      text-align:center;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(245,196,0,.18) 1.5px,transparent 1.5px);
+      background-size:28px 28px;
+      pointer-events:none;
+    }
+    .hero-tag{
+      display:inline-block;
+      background:var(--yellow);color:var(--navy);
+      font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      padding:5px 14px;border-radius:20px;margin-bottom:18px;
+    }
+    .hero h1{
+      color:#fff;font-size:clamp(2rem,6vw,3.4rem);
+      font-weight:900;line-height:1.15;margin-bottom:14px;
+    }
+    .hero h1 em{color:var(--yellow);font-style:normal;}
+    .hero .theme{
+      color:rgba(255,255,255,.75);font-size:clamp(13px,2vw,16px);
+      font-style:italic;margin-bottom:28px;
+    }
+    .hero-details{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:36px;
+    }
+    .hero-pill{
+      background:rgba(255,255,255,.1);
+      color:#fff;font-size:13px;font-weight:600;
+      padding:8px 16px;border-radius:20px;
+      display:flex;align-items:center;gap:6px;
+    }
+    .hero-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+    .btn-primary{
+      background:var(--yellow);color:var(--navy);
+      font-weight:800;font-size:15px;
+      padding:14px 28px;border-radius:30px;
+      transition:opacity .2s;
+    }
+    .btn-primary:hover{opacity:.85;}
+    .btn-outline{
+      background:transparent;color:#fff;
+      border:2px solid rgba(255,255,255,.4);
+      font-weight:700;font-size:15px;
+      padding:14px 28px;border-radius:30px;
+      transition:border-color .2s;
+    }
+    .btn-outline:hover{border-color:#fff;}
+
+    /* ── TICKER ──────────────────────────────────────────────── */
+    .ticker-wrap{
+      background:var(--yellow);overflow:hidden;
+      padding:10px 0;white-space:nowrap;
+    }
+    .ticker-inner{
+      display:inline-block;
+      animation:ticker 28s linear infinite;
+    }
+    .ticker-inner span{
+      display:inline-block;
+      font-size:13px;font-weight:700;color:var(--navy);
+      padding:0 30px;
+    }
+    @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+    /* ── SECTION WRAPPER ─────────────────────────────────────── */
+    section{padding:64px 5%;}
+    .section-label{
+      font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+      color:var(--purple);margin-bottom:8px;
+    }
+    .section-title{
+      font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;
+      color:var(--navy);margin-bottom:8px;
+    }
+    .section-sub{color:var(--muted);font-size:15px;margin-bottom:40px;max-width:560px;}
+
+    /* ── ABOUT ───────────────────────────────────────────────── */
+    .about{background:var(--gray);}
+    .about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+    .about-card{
+      background:#fff;border-radius:var(--radius);
+      padding:24px 20px;
+      box-shadow:var(--shadow);
+      border-top:4px solid var(--purple);
+    }
+    .about-card .icon{font-size:2rem;margin-bottom:10px;}
+    .about-card h3{font-size:1rem;color:var(--navy);margin-bottom:6px;}
+    .about-card p{font-size:13px;color:var(--muted);line-height:1.6;}
+
+    /* ── PROGRAMME ───────────────────────────────────────────── */
+    .programme-table{width:100%;min-width:640px;border-collapse:collapse;font-size:14px;}
+    .programme-table thead th{
+      background:var(--navy);color:#fff;
+      padding:12px 16px;text-align:left;font-size:12px;letter-spacing:.5px;
+    }
+    .programme-table td{padding:12px 16px;border-bottom:1px solid #eee;vertical-align:top;}
+    .programme-table tr:last-child td{border-bottom:none;}
+    .programme-table .time{font-weight:700;color:var(--navy);white-space:nowrap;width:160px;}
+    .programme-table .activity{font-weight:600;color:var(--text);}
+    .programme-table .activity small{display:block;font-weight:400;color:var(--muted);margin-top:3px;}
+    .programme-table .speaker-cell{color:var(--purple);font-size:13px;font-style:italic;}
+    .row-keynote{background:#EEEDFE;}
+    .row-panel{background:#E6F9F0;}
+    .row-breakout{background:#FFF3E0;}
+    .row-break{background:#f9f9f9;}
+    .prog-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .prog-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+    .legend-pill{
+      font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;
+    }
+    .lp-keynote{background:#EEEDFE;color:var(--purple);}
+    .lp-panel{background:#E6F9F0;color:#1A7A50;}
+    .lp-breakout{background:#FFF3E0;color:#E65100;}
+    .lp-break{background:#f9f9f9;color:#888;}
+
+    /* ── SPEAKERS ────────────────────────────────────────────── */
+    .speakers{background:var(--gray);}
+    .speakers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
+    .speaker-card{
+      background:#fff;border-radius:var(--radius);
+      padding:24px 20px;text-align:center;
+      box-shadow:var(--shadow);
+      cursor:pointer;
+      transition:transform .2s,box-shadow .2s;
+      border:2px solid transparent;
+    }
+    .speaker-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(83,74,183,.2);border-color:var(--purple);}
+    .speaker-avatar{
+      width:80px;height:80px;border-radius:50%;
+      background:var(--light);
+      border:3px solid var(--yellow);
+      margin:0 auto 14px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:2rem;overflow:hidden;
+    }
+    .speaker-avatar img{width:100%;height:100%;object-fit:cover;}
+    .speaker-card h3{font-size:15px;color:var(--navy);font-weight:700;margin-bottom:4px;}
+    .speaker-card .role{font-size:12px;color:var(--purple);font-weight:600;margin-bottom:8px;}
+    .speaker-card .topic-tag{
+      display:inline-block;
+      background:var(--light);color:var(--navy);
+      font-size:11px;font-weight:600;
+      padding:3px 10px;border-radius:12px;
+    }
+    .speaker-card .click-hint{
+      font-size:11px;color:var(--muted);margin-top:8px;
+    }
+
+    /* ── SPEAKER MODAL ───────────────────────────────────────── */
+    .modal-overlay{
+      display:none;position:fixed;inset:0;z-index:200;
+      background:rgba(38,33,92,.6);backdrop-filter:blur(4px);
+      align-items:center;justify-content:center;padding:20px;
+    }
+    .modal-overlay.open{display:flex;}
+    .modal{
+      background:#fff;border-radius:20px;
+      max-width:540px;width:100%;
+      max-height:90vh;overflow-y:auto;
+      padding:36px 32px;
+      position:relative;
+      box-shadow:0 20px 60px rgba(0,0,0,.25);
+    }
+    .modal-close{
+      position:absolute;top:16px;right:16px;
+      background:var(--gray);border:none;
+      width:32px;height:32px;border-radius:50%;
+      font-size:16px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      color:var(--navy);
+    }
+    .modal-close:hover{background:var(--yellow);}
+    .modal-avatar{
+      width:90px;height:90px;border-radius:50%;
+      background:var(--light);border:4px solid var(--yellow);
+      margin:0 auto 16px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:2.5rem;overflow:hidden;
+    }
+    .modal-avatar img{width:100%;height:100%;object-fit:cover;}
+    .modal h2{text-align:center;color:var(--navy);font-size:1.3rem;margin-bottom:4px;}
+    .modal .modal-role{text-align:center;color:var(--purple);font-size:13px;font-weight:600;margin-bottom:16px;}
+    .modal-tag{
+      display:inline-block;
+      background:var(--light);color:var(--navy);
+      font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;
+      margin-bottom:16px;
+    }
+    .modal-section{margin-bottom:16px;}
+    .modal-section h4{font-size:13px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;}
+    .modal-section p{font-size:14px;color:var(--text);line-height:1.7;}
+
+    /* ── BREAKOUT ────────────────────────────────────────────── */
+    .breakout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+    .breakout-card{
+      border-radius:var(--radius);padding:28px 24px;
+      box-shadow:var(--shadow);
+    }
+    .breakout-card.track-a{background:linear-gradient(135deg,#534AB7 0%,#26215C 100%);color:#fff;}
+    .breakout-card.track-b{background:linear-gradient(135deg,#F5C400 0%,#e6a800 100%);color:var(--navy);}
+    .breakout-card .track-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:10px;}
+    .breakout-card h3{font-size:1.15rem;font-weight:800;margin-bottom:10px;}
+    .breakout-card ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .breakout-card ul li{font-size:13px;opacity:.9;display:flex;align-items:flex-start;gap:6px;}
+    .breakout-card ul li::before{content:'→';font-weight:700;flex-shrink:0;}
+
+    /* ── REGISTRATION ────────────────────────────────────────── */
+    .registration{background:var(--navy);}
+    .registration .section-label{color:var(--yellow);}
+    .registration .section-title{color:#fff;}
+    .registration .section-sub{color:rgba(255,255,255,.6);}
+    .reg-form{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius);padding:32px;
+      max-width:520px;width:100%;
+    }
+    .reg-field{margin-bottom:18px;}
+    .reg-field label{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:6px;}
+    .reg-field input,.reg-field select{
+      width:100%;padding:11px 14px;
+      background:rgba(255,255,255,.1);
+      border:1.5px solid rgba(255,255,255,.2);
+      border-radius:8px;color:#fff;font-size:14px;
+      transition:border-color .2s;
+    }
+    .reg-field input::placeholder{color:rgba(255,255,255,.4);}
+    .reg-field input:focus,.reg-field select:focus{outline:2px solid var(--yellow);outline-offset:2px;border-color:var(--yellow);}
+    .reg-field select option{background:var(--navy);color:#fff;}
+    .other-school{display:none;}
+    .reg-btn{
+      width:100%;padding:14px;
+      background:var(--yellow);color:var(--navy);
+      border:none;border-radius:var(--radius);
+      font-size:16px;font-weight:800;cursor:pointer;
+      margin-top:8px;transition:opacity .2s;
+    }
+    .reg-btn:hover{opacity:.85;}
+    .reg-btn:disabled{opacity:.6;cursor:not-allowed;}
+    .reg-success{
+      display:none;text-align:center;padding:24px;
+      color:#fff;
+    }
+    .reg-success .big-emoji{font-size:3rem;margin-bottom:10px;}
+    .reg-success h3{color:var(--yellow);margin-bottom:8px;}
+    .reg-success p{color:rgba(255,255,255,.7);font-size:14px;}
+    .reg-error{
+      background:rgba(255,0,0,.1);color:#ff9999;
+      border:1px solid rgba(255,0,0,.2);
+      border-radius:8px;padding:10px 14px;font-size:13px;
+      margin-top:10px;display:none;
+    }
+
+    /* ── SURVEY ──────────────────────────────────────────────── */
+    #survey{background:var(--gray);}
+    .survey-container{max-width:600px;width:100%;}
+    .survey-step{display:none;}
+    .survey-step.active{display:block;}
+
+    .picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+    .pick-btn{
+      padding:20px 16px;border:2px solid #ddd;
+      border-radius:var(--radius);background:#fff;
+      cursor:pointer;text-align:center;
+      transition:border-color .2s,background .2s;
+    }
+    .pick-btn:hover,.pick-btn.selected{border-color:var(--purple);background:var(--light);}
+    .pick-btn .pick-icon{font-size:2rem;margin-bottom:8px;}
+    .pick-btn strong{display:block;font-size:15px;color:var(--navy);}
+    .pick-btn small{font-size:12px;color:var(--muted);}
+
+    .survey-card{
+      background:#fff;border-radius:var(--radius);
+      padding:28px 24px;box-shadow:var(--shadow);
+    }
+    .survey-id-pill{
+      background:var(--light);border:1.5px solid var(--purple);
+      border-radius:8px;padding:10px 14px;
+      font-size:13px;color:var(--muted);margin-bottom:20px;
+    }
+    .survey-id-pill strong{color:var(--navy);font-size:15px;}
+    .s-field{margin-bottom:18px;}
+    .s-field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+    .s-field label .req{color:var(--purple);}
+    .s-field input,.s-field select,.s-field textarea{
+      width:100%;padding:10px 14px;
+      border:1.5px solid #ddd;border-radius:8px;
+      font-size:14px;color:var(--text);
+      transition:border-color .2s;background:#fff;
+    }
+    .s-field input:focus,.s-field select:focus,.s-field textarea:focus{outline:2px solid var(--purple);outline-offset:2px;border-color:var(--purple);}
+    .s-field textarea{min-height:76px;resize:vertical;}
+    .s-section{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid #eee;}
+    .opts{display:flex;flex-direction:column;gap:8px;}
+    .opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid #ddd;border-radius:8px;cursor:pointer;transition:border-color .15s,background .15s;}
+    .opt:hover{border-color:var(--purple);background:var(--light);}
+    .opt input{accent-color:var(--purple);width:16px;height:16px;flex-shrink:0;}
+    .opt span{font-size:14px;}
+    .stars-row{display:flex;gap:6px;flex-direction:row-reverse;justify-content:flex-end;}
+    .stars-row input{display:none;}
+    .stars-row label{font-size:2rem;color:#ccc;cursor:pointer;font-weight:normal;margin:0;}
+    .stars-row input:checked ~ label,.stars-row label:hover,.stars-row label:hover ~ label{color:var(--yellow);}
+    .survey-nav{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+    .survey-back{background:none;border:2px solid #ddd;border-radius:var(--radius);color:var(--navy);font-size:14px;font-weight:600;padding:12px 20px;cursor:pointer;transition:border-color .2s;}
+    .survey-back:hover{border-color:var(--purple);}
+    .survey-submit{
+      flex:1;padding:13px;
+      background:var(--purple);color:#fff;
+      border:none;border-radius:var(--radius);
+      font-size:15px;font-weight:700;cursor:pointer;
+      transition:background .2s,opacity .2s;
+    }
+    .survey-submit:hover{background:var(--navy);}
+    .survey-submit:disabled{opacity:.6;cursor:not-allowed;}
+    .survey-error{background:#fff0f0;color:#c00;border:1px solid #fcc;border-radius:8px;padding:10px 14px;font-size:13px;margin-top:12px;display:none;}
+    .survey-success{text-align:center;padding:40px 24px;}
+    .survey-success .big{font-size:3.5rem;margin-bottom:12px;}
+    .survey-success h3{color:var(--navy);margin-bottom:8px;}
+    .survey-success p{color:var(--muted);font-size:14px;margin-bottom:20px;}
+    .survey-success .sid{display:inline-block;background:var(--light);border:1.5px solid var(--purple);color:var(--navy);font-weight:700;font-size:1.1rem;padding:8px 20px;border-radius:20px;margin-bottom:20px;}
+    .survey-again{background:var(--yellow);color:var(--navy);border:none;border-radius:var(--radius);padding:12px 28px;font-weight:700;font-size:15px;cursor:pointer;}
+    .survey-again:hover{opacity:.85;}
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer{
+      background:var(--navy);padding:40px 5%;
+      text-align:center;
+    }
+    footer .f-logo{color:var(--yellow);font-size:1.2rem;font-weight:800;margin-bottom:8px;}
+    footer p{color:rgba(255,255,255,.5);font-size:13px;line-height:1.8;}
+    footer .f-divider{border:none;border-top:1px solid rgba(255,255,255,.1);margin:20px auto;max-width:200px;}
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media(max-width:700px){
+      .nav-links,.nav-cta{display:none;}
+      .hamburger{display:flex;}
+      .picker-grid{grid-template-columns:1fr;}
+      section{padding:48px 5%;}
+      .hero{padding:56px 5% 48px;}
+      .hero-pill{justify-content:center;text-align:center;}
+      .hero-btns>a{width:min(100%,320px);text-align:center;}
+      .modal{padding:32px 22px;}
+    }
+    @media(max-width:420px){
+      nav{padding:0 16px;}
+      .nav-logo{font-size:1rem;}
+      section{padding:40px 16px;}
+      .hero{padding:48px 16px 40px;}
+      .hero-tag{font-size:10px;letter-spacing:1px;}
+      .hero-details{gap:8px;}
+      .hero-pill{width:100%;font-size:12px;}
+      .reg-form,.survey-card{padding:22px 18px;}
+      .survey-nav{flex-direction:column;}
+      .survey-nav button{width:100%;}
+      .modal-overlay{padding:12px;}
+      .modal{max-height:94vh;padding:30px 18px 22px;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto;}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">⚡ TechSpark <span>Okitipupa</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#survey">Survey</a></li>
+    <li><a href="#register">Register</a></li>
+  </ul>
+  <a href="#register" class="nav-cta">Register Free</a>
+  <button class="hamburger" id="menu-toggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about"     onclick="closeMenu()">About</a>
+  <a href="#programme" onclick="closeMenu()">Programme</a>
+  <a href="#speakers"  onclick="closeMenu()">Speakers</a>
+  <a href="#survey"    onclick="closeMenu()">Survey</a>
+  <a href="#register"  onclick="closeMenu()">Register</a>
+</div>
+
+<!-- ══ HERO ═════════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-tag">⚡ TechSpark Okitipupa 2026</div>
+  <h1>Beyond the <em>Classroom</em>.<br/>Dream it. Learn it. Build it.</h1>
+  <p class="theme">"The future belongs to those who learn, adapt, and create."</p>
+  <div class="hero-details">
+    <div class="hero-pill">📅 Wednesday, 21 October 2026</div>
+    <div class="hero-pill">🕘 9:00 AM – 1:00 PM</div>
+    <div class="hero-pill">📍 Stella Maris School Hall, Okitipupa</div>
+    <div class="hero-pill">🎓 Students & Teachers</div>
+  </div>
+  <div class="hero-btns">
+    <a href="#register" class="btn-primary">Register Free →</a>
+    <a href="#programme" class="btn-outline">View Programme</a>
+  </div>
+</section>
+
+<!-- ══ TICKER ════════════════════════════════════════════════════════ -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>⚡ TechSpark Okitipupa 2026</span>
+    <span>•</span>
+    <span>🎤 Keynote: Barr. Omotoyosi Edeboh</span>
+    <span>•</span>
+    <span>🎨 Design is a Superpower – Kayode Owoyale</span>
+    <span>•</span>
+    <span>🔐 Stay Safe, Stay Smart – Omosola Omolola</span>
+    <span>•</span>
+    <span>📍 Stella Maris School Hall, Okitipupa</span>
+    <span>•</span>
+    <span>📅 21 October 2026 &nbsp;•&nbsp; 9 AM – 1 PM</span>
+    <span>•</span>
+    <span>🆓 FREE Entry for Students & Teachers</span>
+    <span>•</span>
+    <span>⚡ TechSpark Okitipupa 2026</span>
+    <span>•</span>
+    <span>🎤 Keynote: Barr. Omotoyosi Edeboh</span>
+    <span>•</span>
+    <span>🎨 Design is a Superpower – Kayode Owoyale</span>
+    <span>•</span>
+    <span>🔐 Stay Safe, Stay Smart – Omosola Omolola</span>
+    <span>•</span>
+    <span>📍 Stella Maris School Hall, Okitipupa</span>
+    <span>•</span>
+    <span>📅 21 October 2026 &nbsp;•&nbsp; 9 AM – 1 PM</span>
+    <span>•</span>
+    <span>🆓 FREE Entry for Students & Teachers</span>
+    <span>•</span>
+  </div>
+</div>
+
+<!-- ══ ABOUT ═════════════════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="section-label">About the Event</div>
+  <div class="section-title">What is TechSpark Okitipupa?</div>
+  <p class="section-sub">A one-day technology and innovation conference for secondary school students and teachers in Okitipupa — designed to ignite curiosity, spark ideas, and open doors.</p>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="icon">🚀</div>
+      <h3>Inspiring Talks</h3>
+      <p>Learn from industry professionals in tech, design, and cybersecurity who started just like you.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">🛠️</div>
+      <h3>Hands-On Breakouts</h3>
+      <p>Join interactive sessions on coding, app building, and digital skills you can start using today.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">🤝</div>
+      <h3>Panel Discussion</h3>
+      <p>Ask real questions to real professionals — how they got started and where technology is headed.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">🏆</div>
+      <h3>Prizes & Certificates</h3>
+      <p>Walk away with more than knowledge — win prizes and earn a certificate of participation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROGRAMME ═════════════════════════════════════════════════════ -->
+<section id="programme">
+  <div class="section-label">Schedule</div>
+  <div class="section-title">Programme of Events</div>
+  <p class="section-sub">Wednesday 21 October 2026 &nbsp;•&nbsp; 9:00 AM – 1:00 PM</p>
+  <div class="prog-wrapper">
+    <table class="programme-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Activity</th>
+          <th>Speaker / Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="time">9:00 – 9:20 AM</td><td class="activity">Arrival &amp; Registration<small>Check in, collect name tags</small></td><td class="speaker-cell">—</td></tr>
+        <tr><td class="time">9:20 – 9:35 AM</td><td class="activity">Welcome Address</td><td class="speaker-cell">Stella Maris Representative</td></tr>
+        <tr><td class="time">9:35 – 9:45 AM</td><td class="activity">Opening Remarks &amp; Overview</td><td class="speaker-cell">TalentMakers Foundation</td></tr>
+        <tr class="row-keynote"><td class="time">9:45 – 10:30 AM</td><td class="activity">🎤 Keynote Address<small>"Beyond the Classroom – Unlocking Youth Potential Through Technology"</small></td><td class="speaker-cell">Barr. Omotoyosi Edeboh</td></tr>
+        <tr class="row-keynote"><td class="time">10:30 – 10:40 AM</td><td class="activity">Q&amp;A with Keynote Speaker</td><td class="speaker-cell">Open Floor</td></tr>
+        <tr class="row-break"><td class="time">10:40 – 10:50 AM</td><td class="activity">☕ Short Break / Refreshments</td><td class="speaker-cell">—</td></tr>
+        <tr><td class="time">10:50 – 11:20 AM</td><td class="activity">🎨 Talk 1: Design is a Superpower<small>How Creativity Builds Tech Products</small></td><td class="speaker-cell">Kayode Owoyale</td></tr>
+        <tr><td class="time">11:20 – 11:50 AM</td><td class="activity">🔐 Talk 2: Stay Safe, Stay Smart<small>An Introduction to Cybersecurity &amp; Your Digital Life</small></td><td class="speaker-cell">Omosola Omolola (Ruth)</td></tr>
+        <tr class="row-panel"><td class="time">11:50 AM – 12:10 PM</td><td class="activity">💬 Panel Discussion<small>"How Can Young People Use Technology to Solve Local Problems?"</small></td><td class="speaker-cell">All Speakers · Moderated by Divine Asolo</td></tr>
+        <tr class="row-breakout"><td class="time">12:10 – 12:40 PM</td><td class="activity">⚙️ Parallel Breakout Sessions<small>Track A: Coding &amp; App Building &nbsp;|&nbsp; Track B: Digital Skills &amp; Career Paths</small></td><td class="speaker-cell">TalentMakers Team</td></tr>
+        <tr class="row-breakout"><td class="time">12:40 – 12:50 PM</td><td class="activity">Breakout Group Presentations<small>2-minute pitch per group</small></td><td class="speaker-cell">—</td></tr>
+        <tr><td class="time">12:50 – 1:00 PM</td><td class="activity">🏆 Announcements, Prizes &amp; Closing</td><td class="speaker-cell">TalentMakers Foundation</td></tr>
+        <tr class="row-break"><td class="time">1:00 PM</td><td class="activity">End of Conference</td><td class="speaker-cell">Networking &amp; Departure</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prog-legend">
+    <span class="legend-pill lp-keynote">■ Keynote</span>
+    <span class="legend-pill lp-panel">■ Panel</span>
+    <span class="legend-pill lp-breakout">■ Breakout</span>
+    <span class="legend-pill lp-break">■ Break</span>
+  </div>
+</section>
+
+<!-- ══ SPEAKERS ══════════════════════════════════════════════════════ -->
+<section class="speakers" id="speakers">
+  <div class="section-label">Meet the Speakers</div>
+  <div class="section-title">Who You'll Hear From</div>
+  <p class="section-sub">Click on any speaker to read their full bio and talk synopsis.</p>
+  <div class="speakers-grid">
+
+    <!-- Barr. Omotoyosi Edeboh -->
+    <div class="speaker-card" onclick="openModal('modal-omo')">
+      <div class="speaker-avatar">🧑‍⚖️</div>
+      <h3>Barr. Omotoyosi Edeboh</h3>
+      <div class="role">Keynote Speaker</div>
+      <span class="topic-tag">Tech Advocacy</span>
+      <p class="click-hint">Tap to read more →</p>
+    </div>
+
+    <!-- Kayode Owoyale -->
+    <div class="speaker-card" onclick="openModal('modal-kayode')">
+      <div class="speaker-avatar">🎨</div>
+      <h3>Kayode Owoyale</h3>
+      <div class="role">Brand Designer</div>
+      <span class="topic-tag">Design & UI/UX</span>
+      <p class="click-hint">Tap to read more →</p>
+    </div>
+
+    <!-- Omosola Omolola -->
+    <div class="speaker-card" onclick="openModal('modal-ruth')">
+      <div class="speaker-avatar">🔐</div>
+      <h3>Omosola Omolola</h3>
+      <div class="role">CS Graduate, FUTA</div>
+      <span class="topic-tag">Cybersecurity</span>
+      <p class="click-hint">Tap to read more →</p>
+    </div>
+
+    <!-- Panel Moderator -->
+    <div class="speaker-card" onclick="openModal('modal-moderator')">
+      <div class="speaker-avatar">🎙️</div>
+      <h3>Divine Asolo</h3>
+      <div class="role">Panel Moderator</div>
+      <span class="topic-tag">Facilitation</span>
+      <p class="click-hint">Tap to read more →</p>
+    </div>
+
+    <!-- Mystery Speaker -->
+    <div class="speaker-card" onclick="openModal('modal-mystery')">
+      <div class="speaker-avatar" style="background:var(--navy);border-color:var(--purple);">❓</div>
+      <h3>Coming Soon</h3>
+      <div class="role">Special Guest</div>
+      <span class="topic-tag" style="background:#EEEDFE;color:var(--purple);">🔒 Surprise</span>
+      <p class="click-hint">Who could it be? →</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SPEAKER MODALS ════════════════════════════════════════════════ -->
+
+<!-- Omotoyosi -->
+<div class="modal-overlay" id="modal-omo" onclick="closeModalOutside(event,'modal-omo')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-omo')">✕</button>
+    <div class="modal-avatar">🧑‍⚖️</div>
+    <h2>Barr. Omotoyosi Edeboh</h2>
+    <div class="modal-role">Legal Practitioner & Technology Advocate</div>
+    <div class="modal-tag">🎤 Keynote Speaker</div>
+    <div class="modal-section">
+      <h4>About</h4>
+      <p>Barr. Omotoyosi Edeboh is a legal practitioner and passionate technology advocate dedicated to empowering young people across Nigeria through digital literacy and innovation. She brings together her expertise in law and her belief in the transformative power of technology to inspire the next generation of problem-solvers and creators.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Talk Synopsis</h4>
+      <p><strong>"Beyond the Classroom – Unlocking Youth Potential Through Technology"</strong><br/><br/>In this keynote, Barr. Edeboh challenges students to see technology not just as a tool, but as a language — one that opens doors to careers, businesses, and solutions that can transform communities. She will share how the digital economy is reshaping opportunity in Nigeria and what that means for every young person in the room today.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Kayode -->
+<div class="modal-overlay" id="modal-kayode" onclick="closeModalOutside(event,'modal-kayode')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-kayode')">✕</button>
+    <div class="modal-avatar">🎨</div>
+    <h2>Kayode Owoyale</h2>
+    <div class="modal-role">Brand Designer & Creative Entrepreneur</div>
+    <div class="modal-tag">🎨 Talk 1</div>
+    <div class="modal-section">
+      <h4>About</h4>
+      <p>Kayode Owoyale is a brand designer and digital creative professional whose work sits at the intersection of creativity, technology, communication, and business strategy. He is passionate about helping people — especially young people — understand how creative thinking and digital skills can be transformed into practical solutions and meaningful opportunities.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Talk Synopsis</h4>
+      <p><strong>"Design is a Superpower: How Creativity Builds Tech Products"</strong><br/><br/>Kayode introduces students to the world of UI/UX design and branding — showing that the way apps and websites look and feel is a career path, not an accident. Using real before-and-after examples, he demonstrates how creativity plus problem-solving equals a powerful tech skill that anyone can develop, even with limited resources.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Ruth -->
+<div class="modal-overlay" id="modal-ruth" onclick="closeModalOutside(event,'modal-ruth')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-ruth')">✕</button>
+    <div class="modal-avatar">🔐</div>
+    <h2>Omosola Omolola (Ruth)</h2>
+    <div class="modal-role">CS Graduate & Cybersecurity Tutor, FUTA</div>
+    <div class="modal-tag">🔐 Talk 2</div>
+    <div class="modal-section">
+      <h4>About</h4>
+      <p>Omosola Omolola, known as Ruth, is a Computer Science graduate of Adeleke University currently pursuing her Master's degree at the Federal University of Technology, Akure (FUTA). She has hands-on experience tutoring students in Python and cybersecurity, and her research interests include healthcare data privacy, AI, and blockchain applications in healthcare systems.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Talk Synopsis</h4>
+      <p><strong>"Stay Safe, Stay Smart: An Introduction to Cybersecurity & Your Digital Life"</strong><br/><br/>Ruth uses real examples that students already encounter — WhatsApp scams, fake links, data breaches — to explain what cybersecurity means and why it matters right now. She closes with simple, actionable habits every student can adopt today to protect themselves online.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Panel Moderator: Divine Asolo -->
+<div class="modal-overlay" id="modal-moderator" onclick="closeModalOutside(event,'modal-moderator')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-moderator')">✕</button>
+    <div class="modal-avatar">🎙️</div>
+    <h2>Divine Asolo</h2>
+    <div class="modal-role">Panel Moderator</div>
+    <div class="modal-tag">💬 Panel Discussion</div>
+    <div class="modal-section">
+      <h4>Role at TechSpark Okitipupa</h4>
+      <p>Divine Asolo will be moderating the panel discussion — "How Can Young People Use Technology to Solve Local Problems?" — guiding a dynamic conversation between speakers and the audience, drawing out insights and keeping the energy high.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Mystery Speaker -->
+<div class="modal-overlay" id="modal-mystery" onclick="closeModalOutside(event,'modal-mystery')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-mystery')">✕</button>
+    <div class="modal-avatar" style="background:var(--navy);border-color:var(--purple);font-size:2.5rem;">❓</div>
+    <h2 style="color:var(--purple);">??? Coming Soon</h2>
+    <div class="modal-role">Special Guest — Identity Locked 🔒</div>
+    <div class="modal-tag" style="background:#EEEDFE;color:var(--purple);">🔒 Surprise</div>
+    <div class="modal-section">
+      <h4>Hint</h4>
+      <p>We have a surprise addition to the TechSpark Okitipupa 2026 lineup. This speaker's identity will be revealed on the day — all we can say is: you won't want to miss it. 👀</p>
+    </div>
+    <div class="modal-section">
+      <h4>Stay Tuned</h4>
+      <p>Follow TalentMakers Foundation for updates. The reveal is coming soon!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BREAKOUT TRACKS ═══════════════════════════════════════════════ -->
+<section id="breakout">
+  <div class="section-label">Parallel Sessions</div>
+  <div class="section-title">Breakout Tracks</div>
+  <p class="section-sub">Choose your track after the panel — both run at the same time.</p>
+  <div class="breakout-grid">
+    <div class="breakout-card track-a">
+      <div class="track-label">Track A</div>
+      <h3>💻 Coding & App Building</h3>
+      <ul>
+        <li>What is programming and how do apps work?</li>
+        <li>See a simple app built from scratch in real time</li>
+        <li>Hands-on: plan your own app idea</li>
+        <li>Resources to start learning online (free)</li>
+      </ul>
+    </div>
+    <div class="breakout-card track-b">
+      <div class="track-label">Track B</div>
+      <h3>📱 Digital Skills & Career Paths</h3>
+      <ul>
+        <li>What jobs exist in tech beyond coding?</li>
+        <li>Design, data, product, marketing in the digital age</li>
+        <li>How to build a digital portfolio as a student</li>
+        <li>Q&amp;A: how to get started from Okitipupa</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SURVEY ═════════════════════════════════════════════════════════ -->
+<section id="survey">
+  <div class="section-label">Feedback</div>
+  <div class="section-title">Event Survey</div>
+  <p class="section-sub">Fill your pre or post-event survey below. Your feedback shapes the next TechSpark.</p>
+
+  <div class="survey-container">
+
+    <!-- Step 0: Role picker -->
+    <div class="survey-step active" id="sv-role">
+      <div class="survey-card">
+        <p style="font-weight:600;color:var(--navy);margin-bottom:14px;">Who are you?</p>
+        <div class="picker-grid">
+          <button class="pick-btn" onclick="sv_pickRole('student')">
+            <div class="pick-icon">🎒</div>
+            <strong>Student</strong>
+            <small>JSS / SSS</small>
+          </button>
+          <button class="pick-btn" onclick="sv_pickRole('teacher')">
+            <div class="pick-icon">👩‍🏫</div>
+            <strong>Teacher</strong>
+            <small>Educator / Staff</small>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1: Phase picker -->
+    <div class="survey-step" id="sv-phase">
+      <div class="survey-card">
+        <button class="survey-back" onclick="sv_goTo('sv-role')">← Back</button>
+        <p style="font-weight:600;color:var(--navy);margin-bottom:14px;" id="sv-phase-label">Select survey type:</p>
+        <div class="picker-grid">
+          <button class="pick-btn" onclick="sv_pickPhase('pre')">
+            <div class="pick-icon">📋</div>
+            <strong>Pre-Event</strong>
+            <small>Before the conference</small>
+          </button>
+          <button class="pick-btn" onclick="sv_pickPhase('post')">
+            <div class="pick-icon">✅</div>
+            <strong>Post-Event</strong>
+            <small>After the conference</small>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Forms -->
+    <div class="survey-step" id="sv-form">
+      <div class="survey-card">
+        <button class="survey-back" onclick="sv_goTo('sv-phase')">← Back</button>
+        <div class="survey-id-pill" id="sv-id-pre-wrap">📋 Your Survey ID: <strong id="sv-id-val">—</strong><br/><small style="color:var(--purple);font-weight:600;">📌 Save this ID — you'll need it for the post-event survey</small></div><div class="s-field" id="sv-id-post-wrap" style="display:none"><label>Your Pre-Survey ID <span class="req">*</span><small style="font-weight:400;color:var(--muted);display:block;margin-top:2px;">Enter the ID you received when you filled the pre-event survey</small></label><input type="text" id="sv-post-id-input" placeholder="e.g. OKI-STU-001" style="text-transform:uppercase;letter-spacing:1px;font-weight:700;"/></div>
+
+        <!-- Student Pre -->
+        <div id="sv-stu-pre">
+          <p class="s-section">About You</p>
+          <div class="s-field"><label>Full Name <span class="req">*</span></label><input type="text" id="sp-name" placeholder="Your full name"/></div>
+          <div class="s-field"><label>Class <span class="req">*</span></label><select id="sp-class"><option value="">Select class</option><option>JSS 1</option><option>JSS 2</option><option>JSS 3</option><option>SSS 1</option><option>SSS 2</option><option>SSS 3</option></select></div>
+          <input type="hidden" id="sp-school" value="Stella Maris Schools"/>
+          <p class="s-section">Before the Conference</p>
+          <div class="s-field"><label>Have you attended a tech event before? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="sp-attended" value="Yes"/><span>Yes</span></label><label class="opt"><input type="radio" name="sp-attended" value="No"/><span>No</span></label></div></div>
+          <div class="s-field"><label>Topics you're most excited about? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="checkbox" name="sp-topics" value="Coding"/><span>Coding / Programming</span></label><label class="opt"><input type="checkbox" name="sp-topics" value="Design & UI/UX"/><span>Design &amp; UI/UX</span></label><label class="opt"><input type="checkbox" name="sp-topics" value="Cybersecurity"/><span>Cybersecurity</span></label><label class="opt"><input type="checkbox" name="sp-topics" value="Artificial Intelligence"/><span>Artificial Intelligence</span></label><label class="opt"><input type="checkbox" name="sp-topics" value="Career Paths in Tech"/><span>Career Paths in Tech</span></label><label class="opt"><input type="checkbox" name="sp-topics" value="Entrepreneurship"/><span>Entrepreneurship</span></label></div></div>
+          <div class="s-field"><label>Confidence using a computer/smartphone for learning? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="sp-conf" value="Not at all confident"/><span>Not at all confident</span></label><label class="opt"><input type="radio" name="sp-conf" value="Slightly confident"/><span>Slightly confident</span></label><label class="opt"><input type="radio" name="sp-conf" value="Moderately confident"/><span>Moderately confident</span></label><label class="opt"><input type="radio" name="sp-conf" value="Very confident"/><span>Very confident</span></label></div></div>
+          <div class="s-field"><label>Can technology help solve problems in your community?</label><div class="opts"><label class="opt"><input type="radio" name="sp-comm" value="Yes, definitely"/><span>Yes, definitely</span></label><label class="opt"><input type="radio" name="sp-comm" value="Maybe"/><span>Maybe</span></label><label class="opt"><input type="radio" name="sp-comm" value="Not sure"/><span>Not sure</span></label><label class="opt"><input type="radio" name="sp-comm" value="No"/><span>No</span></label></div></div>
+          <div class="s-field"><label>What do you hope to take away today?</label><textarea id="sp-hope" placeholder="Anything on your mind..."></textarea></div>
+        </div>
+
+        <!-- Student Post -->
+        <div id="sv-stu-post" style="display:none">
+          <p class="s-section">About You</p>
+          <div class="s-field"><label>Full Name <span class="req">*</span></label><input type="text" id="spo-name" placeholder="Your full name"/></div>
+          <div class="s-field"><label>Class <span class="req">*</span></label><select id="spo-class"><option value="">Select class</option><option>JSS 1</option><option>JSS 2</option><option>JSS 3</option><option>SSS 1</option><option>SSS 2</option><option>SSS 3</option></select></div>
+          <input type="hidden" id="spo-school" value="Stella Maris Schools"/>
+          <p class="s-section">Your Experience</p>
+          <div class="s-field"><label>Rate today's event <span class="req">*</span></label><div class="stars-row"><input type="radio" id="ss5" name="spo-rating" value="5"/><label for="ss5">★</label><input type="radio" id="ss4" name="spo-rating" value="4"/><label for="ss4">★</label><input type="radio" id="ss3" name="spo-rating" value="3"/><label for="ss3">★</label><input type="radio" id="ss2" name="spo-rating" value="2"/><label for="ss2">★</label><input type="radio" id="ss1" name="spo-rating" value="1"/><label for="ss1">★</label></div></div>
+          <div class="s-field"><label>Best session? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="spo-fav" value="Keynote Address"/><span>Keynote Address – Barr. Omotoyosi Edeboh</span></label><label class="opt"><input type="radio" name="spo-fav" value="Talk 1: Design is a Superpower"/><span>Talk 1: Design is a Superpower – Kayode Owoyale</span></label><label class="opt"><input type="radio" name="spo-fav" value="Talk 2: Stay Safe, Stay Smart"/><span>Talk 2: Stay Safe, Stay Smart – Omosola Omolola</span></label><label class="opt"><input type="radio" name="spo-fav" value="Panel Discussion"/><span>Panel Discussion – Moderated by Divine Asolo</span></label><label class="opt"><input type="radio" name="spo-fav" value="Breakout Sessions"/><span>Breakout Sessions</span></label><label class="opt"><input type="radio" name="spo-fav" value="Special Guest Session"/><span>Special Guest Session 🔒</span></label></div></div>
+          <div class="s-field"><label>Did today change how you think about technology? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="spo-changed" value="Yes, a lot"/><span>Yes, a lot</span></label><label class="opt"><input type="radio" name="spo-changed" value="Somewhat"/><span>Somewhat</span></label><label class="opt"><input type="radio" name="spo-changed" value="Not really"/><span>Not really</span></label></div></div>
+          <div class="s-field"><label>Would you like to learn more about tech after today? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="spo-more" value="Yes, definitely"/><span>Yes, definitely</span></label><label class="opt"><input type="radio" name="spo-more" value="Maybe"/><span>Maybe</span></label><label class="opt"><input type="radio" name="spo-more" value="Not sure"/><span>Not sure</span></label></div></div>
+          <div class="s-field"><label>Most important thing you learned today?</label><textarea id="spo-learning" placeholder="Your biggest takeaway..."></textarea></div>
+          <div class="s-field"><label>Suggestions to improve TechSpark?</label><textarea id="spo-suggestions" placeholder="We'd love your ideas..."></textarea></div>
+        </div>
+
+        <!-- Teacher Pre -->
+        <div id="sv-tch-pre" style="display:none">
+          <p class="s-section">About You</p>
+          <div class="s-field"><label>Full Name <span class="req">*</span></label><input type="text" id="tp-name" placeholder="Your full name"/></div>
+          <input type="hidden" id="tp-school" value="Stella Maris Schools"/>
+          <div class="s-field"><label>Subject(s) You Teach <span class="req">*</span></label><input type="text" id="tp-subject" placeholder="e.g. Mathematics, Computer Science"/></div>
+          <p class="s-section">Before the Conference</p>
+          <div class="s-field"><label>How familiar are you with technology tools for teaching? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="tp-fam" value="Not familiar"/><span>Not familiar</span></label><label class="opt"><input type="radio" name="tp-fam" value="Slightly familiar"/><span>Slightly familiar</span></label><label class="opt"><input type="radio" name="tp-fam" value="Moderately familiar"/><span>Moderately familiar</span></label><label class="opt"><input type="radio" name="tp-fam" value="Very familiar"/><span>Very familiar</span></label></div></div>
+          <div class="s-field"><label>Topics you're most interested in today? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="checkbox" name="tp-topics" value="Digital literacy in the classroom"/><span>Digital literacy in the classroom</span></label><label class="opt"><input type="checkbox" name="tp-topics" value="AI tools for teachers"/><span>AI tools for teachers</span></label><label class="opt"><input type="checkbox" name="tp-topics" value="Cybersecurity awareness"/><span>Cybersecurity awareness</span></label><label class="opt"><input type="checkbox" name="tp-topics" value="Design thinking"/><span>Design thinking</span></label><label class="opt"><input type="checkbox" name="tp-topics" value="Student engagement strategies"/><span>Student engagement strategies</span></label></div></div>
+          <div class="s-field"><label>Do you use technology tools in your classroom?</label><div class="opts"><label class="opt"><input type="radio" name="tp-uses" value="Yes, regularly"/><span>Yes, regularly</span></label><label class="opt"><input type="radio" name="tp-uses" value="Occasionally"/><span>Occasionally</span></label><label class="opt"><input type="radio" name="tp-uses" value="Rarely"/><span>Rarely</span></label><label class="opt"><input type="radio" name="tp-uses" value="No"/><span>No</span></label></div></div>
+          <div class="s-field"><label>What do you hope to take away today?</label><textarea id="tp-hope" placeholder="Share your expectations..."></textarea></div>
+        </div>
+
+        <!-- Teacher Post -->
+        <div id="sv-tch-post" style="display:none">
+          <p class="s-section">About You</p>
+          <div class="s-field"><label>Full Name <span class="req">*</span></label><input type="text" id="tpo-name" placeholder="Your full name"/></div>
+          <input type="hidden" id="tpo-school" value="Stella Maris Schools"/>
+          <p class="s-section">Your Experience</p>
+          <div class="s-field"><label>Rate today's event <span class="req">*</span></label><div class="stars-row"><input type="radio" id="ts5" name="tpo-rating" value="5"/><label for="ts5">★</label><input type="radio" id="ts4" name="tpo-rating" value="4"/><label for="ts4">★</label><input type="radio" id="ts3" name="tpo-rating" value="3"/><label for="ts3">★</label><input type="radio" id="ts2" name="tpo-rating" value="2"/><label for="ts2">★</label><input type="radio" id="ts1" name="tpo-rating" value="1"/><label for="ts1">★</label></div></div>
+          <div class="s-field"><label>Most valuable session for you as an educator? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="tpo-fav" value="Keynote Address"/><span>Keynote Address – Barr. Omotoyosi Edeboh</span></label><label class="opt"><input type="radio" name="tpo-fav" value="Talk 1: Design is a Superpower"/><span>Talk 1: Design is a Superpower – Kayode Owoyale</span></label><label class="opt"><input type="radio" name="tpo-fav" value="Talk 2: Stay Safe, Stay Smart"/><span>Talk 2: Stay Safe, Stay Smart – Omosola Omolola</span></label><label class="opt"><input type="radio" name="tpo-fav" value="Panel Discussion"/><span>Panel Discussion – Moderated by Divine Asolo</span></label><label class="opt"><input type="radio" name="tpo-fav" value="Breakout Sessions"/><span>Breakout Sessions</span></label><label class="opt"><input type="radio" name="tpo-fav" value="Special Guest Session"/><span>Special Guest Session 🔒</span></label></div></div>
+          <div class="s-field"><label>Did today give you ideas to use in your classroom? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="tpo-ideas" value="Yes, many ideas"/><span>Yes, many ideas</span></label><label class="opt"><input type="radio" name="tpo-ideas" value="A few ideas"/><span>A few ideas</span></label><label class="opt"><input type="radio" name="tpo-ideas" value="Not really"/><span>Not really</span></label></div></div>
+          <div class="s-field"><label>How likely are you to recommend TechSpark to other teachers? <span class="req">*</span></label><div class="opts"><label class="opt"><input type="radio" name="tpo-rec" value="Very likely"/><span>Very likely</span></label><label class="opt"><input type="radio" name="tpo-rec" value="Likely"/><span>Likely</span></label><label class="opt"><input type="radio" name="tpo-rec" value="Unlikely"/><span>Unlikely</span></label></div></div>
+          <div class="s-field"><label>Most useful thing you learned today?</label><textarea id="tpo-learning" placeholder="Your biggest takeaway..."></textarea></div>
+          <div class="s-field"><label>Suggestions to improve future TechSpark events?</label><textarea id="tpo-suggestions" placeholder="We value your feedback..."></textarea></div>
+        </div>
+
+        <div class="survey-error" id="sv-error" role="alert" aria-live="polite">Please fill in all required fields.</div>
+        <div class="survey-nav">
+          <button class="survey-back" onclick="sv_goTo('sv-phase')">← Back</button>
+          <button class="survey-submit" id="sv-submit" onclick="sv_submit()">Submit Survey →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div class="survey-step" id="sv-success">
+      <div class="survey-card survey-success">
+        <div class="big">🎉</div>
+        <h3>Thank you!</h3>
+        <div class="sid" id="sv-success-id">OKI-STU-001</div>
+        <p>Your response has been recorded.<br/>Keep this ID — it links your pre and post surveys.</p>
+        <button class="survey-again" onclick="sv_reset()">Fill Another Survey</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ REGISTRATION ══════════════════════════════════════════════════ -->
+<section class="registration" id="register">
+  <div class="section-label">Join Us</div>
+  <div class="section-title">Register for Free</div>
+  <p class="section-sub">Secure your spot at TechSpark Okitipupa 2026 — open to all students and teachers.</p>
+  <div class="reg-form" id="reg-form-wrap">
+    <form id="registration-form" onsubmit="submitRegistration(event)" novalidate>
+      <div class="reg-field">
+        <label for="reg-name">Full Name *</label>
+        <input type="text" id="reg-name" placeholder="Your full name" autocomplete="name" required/>
+      </div>
+      <input type="hidden" id="reg-school" value="Stella Maris Schools"/>
+      <div class="reg-field">
+        <label for="reg-role">Role *</label>
+        <select id="reg-role" required>
+          <option value="">Select role</option>
+          <option>Student</option>
+          <option>Teacher</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="reg-field">
+        <label for="reg-phone">Phone Number</label>
+        <input type="tel" id="reg-phone" placeholder="08012345678" autocomplete="tel" inputmode="tel"/>
+      </div>
+      <div class="reg-error" id="reg-error" role="alert" aria-live="polite">Please fill in all required fields.</div>
+      <button class="reg-btn" id="reg-btn" type="submit">Register Now →</button>
+    </form>
+  </div>
+  <div class="reg-success" id="reg-success">
+    <div class="big-emoji">🎉</div>
+    <h3>You're registered!</h3>
+    <p>See you on Wednesday 21 October 2026<br/>at Stella Maris School Hall, Okitipupa.<br/>Arrive by 9:00 AM.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="f-logo">⚡ TechSpark Okitipupa 2026</div>
+  <p>Organised by <strong style="color:#fff;">TalentMakers Foundation</strong></p>
+  <p>Hosted by <strong style="color:#fff;">Stella Maris Schools, Okitipupa</strong></p>
+  <hr class="f-divider"/>
+  <p>📧 info@talentmakersfoundation.org</p>
+  <p style="margin-top:12px;font-size:11px;">© 2026 TalentMakers Foundation. All rights reserved.</p>
+</footer>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════════════════════ -->
+<script>
+// ── CONFIG ─────────────────────────────────────────────────────────
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYW1zVNlZnYFlsp0fXWI_0H_3t_fUcnStbMXno2_c3IKa0MOGzM7Y2ek9SmsZJTZdG/exec";
+
+// ── NAV ────────────────────────────────────────────────────────────
+function toggleMenu(){
+  const menu=document.getElementById('mobile-menu');
+  const isOpen=menu.classList.toggle('open');
+  document.getElementById('menu-toggle').setAttribute('aria-expanded',String(isOpen));
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('menu-toggle').setAttribute('aria-expanded','false');
+}
+
+// ── MODALS ─────────────────────────────────────────────────────────
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeModalOutside(e,id){
+  if(e.target.classList.contains('modal-overlay')) closeModal(id);
+}
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id));
+    closeMenu();
+  }
+});
+
+// ── REGISTRATION ───────────────────────────────────────────────────
+async function submitRegistration(event){
+  event.preventDefault();
+  const name  = document.getElementById('reg-name').value.trim();
+  const school= document.getElementById('reg-school').value;
+  const role  = document.getElementById('reg-role').value;
+  const phone = document.getElementById('reg-phone').value.trim();
+  const errEl = document.getElementById('reg-error');
+  errEl.style.display='none';
+
+  if(!name || !role){
+    errEl.textContent='Please enter your name and select a role.';
+    errEl.style.display='block';
+    (!name ? document.getElementById('reg-name') : document.getElementById('reg-role')).focus();
+    return;
+  }
+
+  if(phone && !/^\+?[0-9\s()-]{7,20}$/.test(phone)){
+    errEl.textContent='Please enter a valid phone number, or leave it blank.';
+    errEl.style.display='block';
+    document.getElementById('reg-phone').focus();
+    return;
+  }
+
+  const btn = document.getElementById('reg-btn');
+  btn.disabled=true; btn.textContent='Registering...';
+
+  const payload = {
+    formType: 'ondRegistration',
+    name, school,
+    role, phone,
+    timestamp: new Date().toISOString()
+  };
+
+  try{
+    const d = await postForm(payload);
+    if(d.status==='success'){
+      document.getElementById('reg-form-wrap').style.display='none';
+      document.getElementById('reg-success').style.display='block';
+    }
+  } catch(error){
+    btn.disabled=false; btn.textContent='Register Now →';
+    errEl.textContent=error.message;
+    errEl.style.display='block';
+  }
+}
+
+// ── SURVEY ─────────────────────────────────────────────────────────
+let sv_role=null, sv_phase=null, sv_id=null;
+
+async function postForm(payload){
+  if(!APPS_SCRIPT_URL || APPS_SCRIPT_URL==='YOUR_APPS_SCRIPT_URL_HERE'){
+    throw new Error('Form submissions are not configured yet. Please try again later.');
+  }
+  const response=await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify(payload)});
+  if(!response.ok) throw new Error('The form could not be submitted. Please try again.');
+  const result=await response.json();
+  if(!result || result.status!=='success'){
+    throw new Error('The form could not be submitted. Please try again.');
+  }
+  return result;
+}
+
+function sv_goTo(stepId){
+  document.querySelectorAll('.survey-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById(stepId).classList.add('active');
+  document.getElementById(stepId).scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function sv_pickRole(role){
+  sv_role=role;
+  document.getElementById('sv-phase-label').textContent =
+    role==='student' ? '🎒 Student — select survey type:' : '👩‍🏫 Teacher — select survey type:';
+  sv_goTo('sv-phase');
+}
+
+function sv_pickPhase(phase){
+  sv_phase=phase;
+  if(phase==='pre'){
+    sv_id = sv_generateId(sv_role);
+    document.getElementById('sv-id-val').textContent = sv_id;
+    document.getElementById('sv-id-pre-wrap').style.display='block';
+    document.getElementById('sv-id-post-wrap').style.display='none';
+  } else {
+    sv_id = null;
+    document.getElementById('sv-id-pre-wrap').style.display='none';
+    document.getElementById('sv-id-post-wrap').style.display='block';
+    document.getElementById('sv-post-id-input').value='';
+  }
+
+  ['sv-stu-pre','sv-stu-post','sv-tch-pre','sv-tch-post'].forEach(b=>{
+    document.getElementById(b).style.display='none';
+  });
+  const key = (sv_role==='student'?'sv-stu-':'sv-tch-') + phase;
+  document.getElementById(key).style.display='block';
+  document.getElementById('sv-error').style.display='none';
+  sv_goTo('sv-form');
+}
+
+function sv_generateId(role){
+  const isStudent = role==='student';
+  const k = isStudent ? 'okitipupa_stu_last_id' : 'okitipupa_tch_last_id';
+  const pfx = isStudent ? 'OKI-STU-' : 'OKI-TCH-';
+  let last=0;
+  try{ last=parseInt(localStorage.getItem(k)||'0',10); }catch(e){}
+  const next=last+1;
+  try{ localStorage.setItem(k,next); }catch(e){}
+  return pfx+String(next).padStart(3,'0');
+}
+
+function sv_getVal(id){ const e=document.getElementById(id); return e?e.value.trim():''; }
+function sv_radio(n){ const e=document.querySelector(`input[name="${n}"]:checked`); return e?e.value:''; }
+function sv_checks(n){ return [...document.querySelectorAll(`input[name="${n}"]:checked`)].map(e=>e.value).join(', '); }
+
+function sv_validate(){
+  const r=sv_role,p=sv_phase;
+  if(r==='student'&&p==='pre')  return sv_getVal('sp-name')&&sv_getVal('sp-class')&&sv_getVal('sp-school')&&sv_radio('sp-attended')&&sv_checks('sp-topics')&&sv_radio('sp-conf');
+  if(r==='student'&&p==='post') return sv_getVal('sv-post-id-input')&&sv_getVal('spo-name')&&sv_getVal('spo-class')&&sv_getVal('spo-school')&&sv_radio('spo-rating')&&sv_radio('spo-fav')&&sv_radio('spo-changed')&&sv_radio('spo-more');
+  if(r==='teacher'&&p==='pre')  return sv_getVal('tp-name')&&sv_getVal('tp-school')&&sv_getVal('tp-subject')&&sv_radio('tp-fam')&&sv_checks('tp-topics');
+  if(r==='teacher'&&p==='post') return sv_getVal('sv-post-id-input')&&sv_getVal('tpo-name')&&sv_getVal('tpo-school')&&sv_radio('tpo-rating')&&sv_radio('tpo-fav')&&sv_radio('tpo-ideas')&&sv_radio('tpo-rec');
+  return false;
+}
+
+async function sv_submit(){
+  document.getElementById('sv-error').style.display='none';
+  if(!sv_validate()){
+    const e=document.getElementById('sv-error');
+    e.style.display='block';
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  const btn=document.getElementById('sv-submit');
+  btn.disabled=true; btn.textContent='Submitting...';
+
+  const finalId = sv_phase==='post' ? sv_getVal('sv-post-id-input').toUpperCase() : sv_id;
+  let payload={respondentId:finalId,timestamp:new Date().toISOString()};
+  const r=sv_role,p=sv_phase;
+
+  if(r==='student'&&p==='pre'){
+    payload.formType='ondStuPre'; payload.name=sv_getVal('sp-name'); payload.class=sv_getVal('sp-class');
+    payload.school=sv_getVal('sp-school'); payload.attended=sv_radio('sp-attended');
+    payload.topics=sv_checks('sp-topics'); payload.confidence=sv_radio('sp-conf');
+    payload.community=sv_radio('sp-comm'); payload.hope=sv_getVal('sp-hope');
+  } else if(r==='student'&&p==='post'){
+    payload.formType='ondStuPost'; payload.name=sv_getVal('spo-name'); payload.class=sv_getVal('spo-class');
+    payload.school=sv_getVal('spo-school'); payload.rating=sv_radio('spo-rating');
+    payload.favSession=sv_radio('spo-fav'); payload.changed=sv_radio('spo-changed');
+    payload.learnMore=sv_radio('spo-more'); payload.learning=sv_getVal('spo-learning');
+    payload.suggestions=sv_getVal('spo-suggestions');
+  } else if(r==='teacher'&&p==='pre'){
+    payload.formType='ondTchPre'; payload.name=sv_getVal('tp-name'); payload.school=sv_getVal('tp-school');
+    payload.subject=sv_getVal('tp-subject'); payload.familiarity=sv_radio('tp-fam');
+    payload.topics=sv_checks('tp-topics'); payload.usesTech=sv_radio('tp-uses');
+    payload.hope=sv_getVal('tp-hope');
+  } else if(r==='teacher'&&p==='post'){
+    payload.formType='ondTchPost'; payload.name=sv_getVal('tpo-name'); payload.school=sv_getVal('tpo-school');
+    payload.rating=sv_radio('tpo-rating'); payload.favSession=sv_radio('tpo-fav');
+    payload.ideas=sv_radio('tpo-ideas'); payload.recommend=sv_radio('tpo-rec');
+    payload.learning=sv_getVal('tpo-learning'); payload.suggestions=sv_getVal('tpo-suggestions');
+  }
+
+  try{
+    await postForm(payload);
+    document.getElementById('sv-success-id').textContent=finalId;
+    sv_goTo('sv-success');
+  } catch(error){
+    btn.disabled=false; btn.textContent='Submit Survey →';
+    const e=document.getElementById('sv-error');
+    e.textContent=error.message;
+    e.style.display='block';
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+
+function sv_reset(){
+  sv_role=sv_phase=sv_id=null;
+  document.getElementById('survey').querySelector('form') && document.getElementById('survey').querySelector('form').reset();
+  document.querySelectorAll('#survey input[type="text"], #survey input[type="tel"], #survey textarea').forEach(e=>e.value='');
+  document.querySelectorAll('#survey input[type="radio"], #survey input[type="checkbox"]').forEach(e=>e.checked=false);
+  document.querySelectorAll('#survey select').forEach(e=>e.selectedIndex=0);
+  document.getElementById('sv-error').style.display='none';
+  document.getElementById('sv-submit').disabled=false;
+  document.getElementById('sv-submit').textContent='Submit Survey →';
+  document.getElementById('sv-id-pre-wrap').style.display='block';
+  document.getElementById('sv-id-post-wrap').style.display='none';
+  if(document.getElementById('sv-post-id-input')) document.getElementById('sv-post-id-input').value='';
+  sv_goTo('sv-role');
+}
+</script>
+</body>
+</html>
